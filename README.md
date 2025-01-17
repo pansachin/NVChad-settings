@@ -21,7 +21,7 @@ rm -rf ~/.local/share/nvim
 ```
 
 ## Install NvChad custom with working go setup
-Includes: formatting, autocompletion, debuggr, linting....
+Includes: formatting, autocompletion, debuggr, linting, copilot....
 ```bash
 git clone https://github.com/pansachin/NChad-settings ~/.config/nvim && nvim
 ```

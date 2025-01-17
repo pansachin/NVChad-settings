@@ -3,7 +3,8 @@ local options = {
     lua = { "stylua" },
     -- css = { "prettier" },
     -- html = { "prettier" },
-    go = {"gofumpt", "goimports"},
+    go = { "gofumpt", "goimports" },
+    terraform = { "tflint", "terraform_fmt" },
   },
 
   format_on_save = {

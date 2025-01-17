@@ -59,6 +59,21 @@ lspconfig.gopls.setup {
   },
 }
 
+-- Configure the Terraform LSP
+lspconfig.terraformls.setup {
+  on_attach = nvlsp.on_attach,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "terraform", "tf", "hcl" },
+  settings = {
+    terraform = {
+      -- Example: enable specific analyses or features
+      experimentalFeatures = {
+        validateOnSave = true,
+      },
+    },
+  },
+}
+
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {
 --   on_attach = nvlsp.on_attach,
