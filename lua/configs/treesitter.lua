@@ -14,6 +14,9 @@ local options = {
     "gowork",
     "gomod",
     "gosum",
+    "json",
+    "yaml",
+    "dockerfile",
   },
 
   highlight = {

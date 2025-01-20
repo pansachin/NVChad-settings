@@ -5,6 +5,7 @@ local options = {
     -- html = { "prettier" },
     go = { "gofumpt", "goimports" },
     terraform = { "tflint", "terraform_fmt" },
+    dockerfile = { "hadolint" },
   },
 
   format_on_save = {

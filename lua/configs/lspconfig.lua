@@ -63,6 +63,7 @@ lspconfig.gopls.setup {
 lspconfig.terraformls.setup {
   on_attach = nvlsp.on_attach,
   capabilities = nvlsp.capabilities,
+  on_init = nvlsp.on_init,
   filetypes = { "terraform", "tf", "hcl" },
   settings = {
     terraform = {
@@ -70,6 +71,37 @@ lspconfig.terraformls.setup {
       experimentalFeatures = {
         validateOnSave = true,
       },
+    },
+  },
+}
+
+-- Docker LSP configuration
+lspconfig.dockerls.setup {
+  on_attach = nvlsp.on_attach,
+  capabilities = nvlsp.capabilities,
+  on_init = nvlsp.on_init,
+  cmd = { "docker-langserver", "--stdio" },
+  filetypes = { "dockerfile", "Dockerfile" },
+  root_dir = lspconfig.util.root_pattern("Dockerfile", ".git"),
+}
+
+-- YAML LSP for Docker Compose
+lspconfig.yamlls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        -- Docker Compose Schema
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+          "docker-compose.yml",
+          "docker-compose.yaml",
+        },
+      },
+      validate = true, -- Enable validation
+      format = { enable = true }, -- Enable formatting
+      hover = true, -- Enable hover
     },
   },
 }
