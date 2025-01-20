@@ -2,11 +2,12 @@ require("dap-go").setup {
   dap_configurations = {
     {
       type = "go",
-      name = "Debug workspace folder",
+      name = "Debug package with args",
       request = "launch",
       mode = "debug",
-      program = "${workspaceFolder}/cmd/cleanup",
+      program = "${fileDirname}",
       args = require("dap-go").get_arguments,
+      outputMode = "remote",
       -- buildFlags = require("dap-go").get_build_flags,
     },
   },
