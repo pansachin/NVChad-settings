@@ -18,9 +18,7 @@ return {
     "github/copilot.vim",
     lazy = false,
     config = function()
-      -- Optional: Configure Copilot settings here
-      vim.g.copilot_no_tab_map = true
-      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      require "configs.copilot"
     end,
   },
 
@@ -63,6 +61,21 @@ return {
     },
     config = function()
       require "configs.dap-go"
+    end,
+  },
+
+  -- go plugin
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    -- branch = "develop", -- if you want develop branch
+    -- keep in mind, it might break everything
+    config = function(_, opts)
+      require("gopher").setup(opts)
+      require "configs.gopher"
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
     end,
   },
 }
