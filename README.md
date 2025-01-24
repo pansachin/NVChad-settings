@@ -27,3 +27,4 @@ git clone https://github.com/pansachin/NvChad-go ~/.config/nvim && nvim
 ```
 
 ## TODO:
+- 
