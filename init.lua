@@ -42,6 +42,16 @@ local custom_indent_group = vim.api.nvim_create_augroup("CustomIndent", { clear 
 vim.api.nvim_create_autocmd("FileType", {
   group = custom_indent_group,
   pattern = "go",
-  command = "setlocal tabstop=4 shiftwidth=4 noexpandtab"
+  command = "setlocal tabstop=4 shiftwidth=4 noexpandtab",
 })
 
+-- Create an autocommand group (comment)
+local custom_comment = vim.api.nvim_create_augroup("CustomTerraformSettings", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = custom_comment,
+  pattern = { "terraform", "hcl" },
+  callback = function()
+    vim.bo.commentstring = "# %s"
+  end,
+})
